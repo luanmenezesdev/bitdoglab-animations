@@ -38,6 +38,7 @@ pico_sdk_init()
 add_executable(led-clock 
     src/main.c
     src/led_animation.c
+    src/np_driver.c
 )
 
 pico_set_program_name(led-clock "led-clock")

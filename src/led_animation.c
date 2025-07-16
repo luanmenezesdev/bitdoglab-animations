@@ -1,10 +1,6 @@
 #include "led_animation.h"
 #include "pico/stdlib.h"
-#include "ws2818b.pio.h"
-
-extern void npSetLED(uint index, uint8_t r, uint8_t g, uint8_t b);
-extern void npClear(void);
-extern void npWrite(void);
+#include "np_driver.h"
 
 void animation_start(Animation *anim, uint64_t now_ms) {
     anim->start_time = now_ms;
