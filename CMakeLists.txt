@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(led-clock 
+add_executable(led-clock
     src/main.c
     src/led_animation.c
     src/np_driver.c
@@ -61,10 +61,9 @@ target_include_directories(led-clock PRIVATE
 )
 
 # Add any user requested libraries
-target_link_libraries(led-clock 
+target_link_libraries(led-clock
         hardware_pio
-        
-        )
+)
 
 pico_add_extra_outputs(led-clock)
 

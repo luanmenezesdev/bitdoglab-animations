@@ -23,7 +23,6 @@ void npSetLED(uint index, uint8_t r, uint8_t g, uint8_t b);
 // Limpa todos os LEDs (apaga)
 void npClear(void);
 
-// Mapeia (row,col) para índice linear
 uint8_t rc_to_idx(uint8_t row, uint8_t col);
 
 #endif
