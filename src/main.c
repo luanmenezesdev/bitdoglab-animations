@@ -12,9 +12,9 @@ FrameLED frame5[]  = {{13, 255, 0, 0}, {19, 255, 0, 0}, {24, 255, 0, 0}};  // 5h
 FrameLED frame6[]  = {{13, 255, 0, 0}, {18, 255, 0, 0}, {23, 255, 0, 0}};  // 6h
 FrameLED frame7[]  = {{13, 255, 0, 0}, {17, 255, 0, 0}, {22, 255, 0, 0}};  // 7h
 FrameLED frame8[]  = {{13, 255, 0, 0}, {17, 255, 0, 0}, {16, 255, 0, 0}};  // 8h
-FrameLED frame9[]  = {{13, 255, 0, 0}, {12, 255, 0, 0}, {11, 255, 0, 0}};   // 9h
-FrameLED frame10[] = {{13, 255, 0, 0}, {7, 255, 0, 0}, {6, 255, 0, 0}};   // 10h
-FrameLED frame11[] = {{13, 255, 0, 0}, {7, 255, 0, 0}, {2, 255, 0, 0}};   // 11h
+FrameLED frame9[]  = {{13, 255, 0, 0}, {12, 255, 0, 0}, {11, 255, 0, 0}};  // 9h
+FrameLED frame10[] = {{13, 255, 0, 0},  {7, 255, 0, 0},  {6, 255, 0, 0}};  // 10h
+FrameLED frame11[] = {{13, 255, 0, 0},  {7, 255, 0, 0},  {2, 255, 0, 0}};  // 11h
 
 Keyframe seconds_frames[] = {
     {0.0f,   frame0,  3},
@@ -34,22 +34,22 @@ Keyframe seconds_frames[] = {
 
 Animation seconds_hand = {
     .frames = seconds_frames,
-    .frame_count = 4,
+    .frame_count = sizeof(seconds_frames) / sizeof(Keyframe),
     .duration_ms = 60000,
     .start_time = 0,
-    .loop = true};
+    .loop = true
+};
 
-int main()
-{
+int main() {
     stdio_init_all();
 
-    while (true)
-    {
-        if (seconds_hand.start_time == 0)
-        {
-            animation_start(&seconds_hand, to_ms_since_boot(get_absolute_time()));
-        }
+    while (true) {
+        uint64_t now = to_ms_since_boot(get_absolute_time());
 
-        animation_render(&seconds_hand, to_ms_since_boot(get_absolute_time()));
+        if (seconds_hand.start_time == 0)
+            animation_start(&seconds_hand, now);
+
+        animation_render(&seconds_hand, now);
+        sleep_ms(16); // evita busy loop (aprox 60 FPS)
     }
 }
