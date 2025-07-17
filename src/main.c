@@ -2,7 +2,7 @@
 #include "pico/stdlib.h"
 #include "led_animation.h"
 #include "np_driver.h"
-#include "clock_animations.c"
+#include "clock_animations.h"
 
 #define LED_PIN 7
 
