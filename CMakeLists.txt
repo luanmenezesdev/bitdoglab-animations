@@ -64,6 +64,8 @@ target_include_directories(led-clock PRIVATE
 # Add any user requested libraries
 target_link_libraries(led-clock
         hardware_pio
+        pico_lwip_http
+        pico_cyw43_arch_lwip_threadsafe_background
 )
 
 pico_add_extra_outputs(led-clock)

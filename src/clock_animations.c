@@ -125,3 +125,8 @@ Animation hours_hand = {
     .duration_ms = 43200000, // 12 hours
     .start_time = 0,
     .loop = true};
+
+void animation_start_at(Animation *anim, uint64_t now_ms, uint8_t start_value, uint8_t max_value)
+{
+    anim->start_time = now_ms - (start_value * anim->duration_ms / max_value);
+}
