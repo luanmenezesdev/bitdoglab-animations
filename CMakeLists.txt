@@ -28,45 +28,45 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(led-clock C CXX ASM)
+project(animations C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(led-clock
+add_executable(animations
     src/main.c
     src/led_animation.c
     src/np_driver.c
-    src/clock_animations.c
+    src/animations.c
 )
 
-pico_set_program_name(led-clock "led-clock")
-pico_set_program_version(led-clock "0.1")
+pico_set_program_name(animations "animations")
+pico_set_program_version(animations "0.1")
 
 # Generate PIO header
-pico_generate_pio_header(led-clock ${CMAKE_CURRENT_LIST_DIR}/pio/ws2818b.pio)
+pico_generate_pio_header(animations ${CMAKE_CURRENT_LIST_DIR}/pio/ws2818b.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(led-clock 0)
-pico_enable_stdio_usb(led-clock 1)
+pico_enable_stdio_uart(animations 0)
+pico_enable_stdio_usb(animations 1)
 
 # Add the standard library to the build
-target_link_libraries(led-clock
+target_link_libraries(animations
         pico_stdlib)
 
 # Add the standard include files to the build
-target_include_directories(led-clock PRIVATE
+target_include_directories(animations PRIVATE
         include
 )
 
 # Add any user requested libraries
-target_link_libraries(led-clock
+target_link_libraries(animations
         hardware_pio
         pico_lwip_http
         pico_cyw43_arch_lwip_threadsafe_background
 )
 
-pico_add_extra_outputs(led-clock)
+pico_add_extra_outputs(animations)
 

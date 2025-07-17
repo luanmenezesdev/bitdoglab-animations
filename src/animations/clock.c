@@ -1,10 +1,6 @@
 #include "led_animation.h"
 #include "np_driver.h"
 
-#define RED 255, 0, 0
-#define GREEN 0, 255, 0
-#define BLUE 0, 0, 255
-
 FrameLED seconds_frame0[] = {{2, 2, RED}, {1, 2, RED}, {0, 2, RED}};
 FrameLED seconds_frame1[] = {{2, 2, RED}, {1, 3, RED}, {0, 3, RED}};
 FrameLED seconds_frame2[] = {{2, 2, RED}, {1, 3, RED}, {0, 4, RED}};
@@ -125,10 +121,3 @@ Animation hours_hand = {
     .duration_ms = 43200000, // 12 hours
     .start_time = 0,
     .loop = true};
-
-void animation_start_at(Animation *anim, uint64_t now_ms, float start_value, float max_value)
-{
-    float progress_frac = start_value / max_value;
-    uint64_t offset = (uint64_t)(progress_frac * anim->duration_ms);
-    anim->start_time = now_ms - offset;
-}

@@ -5,6 +5,9 @@
 #include <stdbool.h>
 
 #define MAX_LEDS_PER_FRAME 25
+#define RED 255, 0, 0
+#define GREEN 0, 255, 0
+#define BLUE 0, 0, 255
 
 // Representa um LED aceso com cor RGB em coordenadas da matriz
 typedef struct

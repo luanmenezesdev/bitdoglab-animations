@@ -39,6 +39,8 @@
   "raspberry-pi-pico.ninjaPath": "${HOME}/.pico-sdk/ninja/v1.12.1/ninja",
   "files.associations": {
     "np_driver.h": "c",
-    "clock_animations.h": "c"
+    "animations.h": "c",
+    "led_animation.h": "c",
+    "clock.h": "c"
   }
 }

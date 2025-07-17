@@ -8,7 +8,7 @@ typedef struct
 } npLED_t;
 
 static npLED_t leds[MATRIX_LEDS];
-uint8_t global_brightness = 255;
+uint8_t global_brightness = 127;
 
 static PIO np_pio;
 static uint sm;
