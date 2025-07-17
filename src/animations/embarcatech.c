@@ -80,6 +80,6 @@ Keyframe embarcatech_frames[] = {
 Animation embarcatech = {
     .frames = embarcatech_frames,
     .frame_count = sizeof(embarcatech_frames) / sizeof(Keyframe),
-    .duration_ms = 5000, // 5 seconds
+    .duration_ms = 10000, // 10 seconds
     .start_time = 0,
     .loop = true};
