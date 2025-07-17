@@ -29,9 +29,14 @@ void iniciar_animacao_com_tempo(int hora, int minuto, int segundo)
 {
     uint64_t now = to_ms_since_boot(get_absolute_time());
 
-    animation_start_at(&seconds_hand, now, segundo, 60);
-    animation_start_at(&minutes_hand, now, minuto, 60);
-    animation_start_at(&hours_hand, now, hora % 12, 12);
+    float hora_float = (hora % 12) + (minuto / 60.0f) + (segundo / 3600.0f);
+    float minuto_float = minuto + (segundo / 60.0f);
+
+    printf("Iniciando animação: %02d:%02d:%02d (Hora: %.2f, Minuto: %.2f)\n", hora, minuto, segundo, hora_float, minuto_float);
+
+    animation_start_at(&seconds_hand, now, segundo, 60.0f);
+    animation_start_at(&minutes_hand, now, minuto_float, 60.0f);
+    animation_start_at(&hours_hand, now, hora_float, 12.0f);
 }
 
 static err_t tcp_recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)

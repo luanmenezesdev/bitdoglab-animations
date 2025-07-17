@@ -126,7 +126,9 @@ Animation hours_hand = {
     .start_time = 0,
     .loop = true};
 
-void animation_start_at(Animation *anim, uint64_t now_ms, uint8_t start_value, uint8_t max_value)
+void animation_start_at(Animation *anim, uint64_t now_ms, float start_value, float max_value)
 {
-    anim->start_time = now_ms - (start_value * anim->duration_ms / max_value);
+    float progress_frac = start_value / max_value;
+    uint64_t offset = (uint64_t)(progress_frac * anim->duration_ms);
+    anim->start_time = now_ms - offset;
 }
