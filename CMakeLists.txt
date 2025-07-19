@@ -40,6 +40,7 @@ add_executable(animations
     src/led_animation.c
     src/np_driver.c
     src/animations.c
+    include/ssd1306_i2c.c
 )
 
 pico_set_program_name(animations "animations")
